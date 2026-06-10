@@ -94,5 +94,5 @@ Mở trình duyệt tại `http://localhost:5000`
 |--------|------|
 | Triệu Quốc Khánh | 23001615 |
 | Nguyễn Thị Thu Hà | 23001603 |
-| Lê Văn Đạt | 2300.... |
-| Triệu Đình Dũng | 2300.... |
+| Lê Văn Đạt | 23001592 |
+| Triệu Đình Dũng | 23001587 |
