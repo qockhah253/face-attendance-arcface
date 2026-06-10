@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Trang chủ — Điểm danh AI{% endblock %}
+{% block content %}
+<div class="text-center mb-5">
+  <h1 class="display-5 fw-bold">Hệ thống Điểm danh Tự động</h1>
+  <p class="lead text-muted">Nhận diện khuôn mặt với ArcFace + ResNet50</p>
+</div>
+
+<div class="row g-4 justify-content-center">
+  <div class="col-md-4">
+    <div class="card-feature text-center p-4">
+      <div class="feature-icon mb-3">👤</div>
+      <h4>Đăng ký sinh viên</h4>
+      <p class="text-muted">Nhập thông tin và chụp ảnh khuôn mặt để đăng ký vào hệ thống</p>
+      <a href="/register" class="btn btn-primary mt-2">Đăng ký ngay</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card-feature text-center p-4">
+      <div class="feature-icon mb-3">📷</div>
+      <h4>Điểm danh</h4>
+      <p class="text-muted">Nhận diện khuôn mặt qua webcam và ghi nhận điểm danh tự động</p>
+      <a href="/attendance" class="btn btn-success mt-2">Điểm danh</a>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card-feature text-center p-4">
+      <div class="feature-icon mb-3">📋</div>
+      <h4>Lịch sử điểm danh</h4>
+      <p class="text-muted">Xem lịch sử điểm danh theo ngày, theo sinh viên</p>
+      <a href="/history" class="btn btn-info mt-2">Xem lịch sử</a>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-5 justify-content-center">
+  <div class="col-md-4">
+    <div class="stat-card text-center p-3">
+      <div class="stat-number">{{ total }}</div>
+      <div class="stat-label">Sinh viên đã đăng ký</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

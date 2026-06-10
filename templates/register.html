@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% block title %}Đăng ký sinh viên{% endblock %}
+{% block content %}
+<h2 class="mb-4">👤 Đăng ký sinh viên</h2>
+
+<div class="row g-4">
+  <!-- Form thông tin -->
+  <div class="col-md-5">
+    <div class="card p-4">
+      <h5 class="mb-3">Thông tin sinh viên</h5>
+      <div class="mb-3">
+        <label class="form-label">Họ và tên *</label>
+        <input type="text" id="name" class="form-control" placeholder="Nguyễn Văn A">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mã sinh viên *</label>
+        <input type="text" id="student_id" class="form-control" placeholder="23001234">
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Lớp</label>
+        <input type="text" id="class_name" class="form-control" placeholder="K68 - Vật lý">
+      </div>
+      <div id="alert-reg" class="alert d-none mt-2"></div>
+      <button class="btn btn-primary w-100" onclick="capture()">📸 Chụp ảnh & Đăng ký</button>
+    </div>
+  </div>
+
+  <!-- Webcam -->
+  <div class="col-md-7">
+    <div class="card p-4">
+      <h5 class="mb-3">Camera</h5>
+      <div class="webcam-wrap position-relative">
+        <video id="video" autoplay playsinline class="webcam-video"></video>
+        <div id="face-box" class="face-box d-none"></div>
+      </div>
+      <canvas id="canvas" class="d-none"></canvas>
+      <div class="mt-3 d-flex gap-2">
+        <button class="btn btn-outline-secondary w-100" onclick="startCamera()">🎥 Bật camera</button>
+        <button class="btn btn-outline-danger w-100" onclick="stopCamera()">⏹ Tắt camera</button>
+      </div>
+      <div id="preview-wrap" class="mt-3 d-none">
+        <p class="text-muted mb-1">Ảnh đã chụp:</p>
+        <img id="preview" class="img-fluid rounded border">
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+let stream = null;
+let capturedImage = null;
+
+async function startCamera() {
+  try {
+    stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480 } });
+    document.getElementById('video').srcObject = stream;
+  } catch(e) {
+    showAlert('alert-reg', 'Không thể truy cập camera: ' + e.message, 'danger');
+  }
+}
+
+function stopCamera() {
+  if (stream) { stream.getTracks().forEach(t => t.stop()); stream = null; }
+}
+
+function capture() {
+  const name = document.getElementById('name').value.trim();
+  const student_id = document.getElementById('student_id').value.trim();
+  if (!name || !student_id) {
+    showAlert('alert-reg', 'Vui lòng điền tên và mã sinh viên', 'warning');
+    return;
+  }
+
+  const video  = document.getElementById('video');
+  const canvas = document.getElementById('canvas');
+  canvas.width  = video.videoWidth  || 640;
+  canvas.height = video.videoHeight || 480;
+  canvas.getContext('2d').drawImage(video, 0, 0);
+  capturedImage = canvas.toDataURL('image/jpeg', 0.9);
+
+  document.getElementById('preview').src = capturedImage;
+  document.getElementById('preview-wrap').classList.remove('d-none');
+
+  fetch('/api/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name, student_id,
+      class_name: document.getElementById('class_name').value.trim(),
+      image: capturedImage
+    })
+  })
+  .then(r => r.json())
+  .then(data => {
+    showAlert('alert-reg', data.message, data.success ? 'success' : 'danger');
+    if (data.success) {
+      document.getElementById('name').value = '';
+      document.getElementById('student_id').value = '';
+      document.getElementById('class_name').value = '';
+    }
+  });
+}
+
+window.onload = startCamera;
+window.onbeforeunload = stopCamera;
+</script>
+{% endblock %}

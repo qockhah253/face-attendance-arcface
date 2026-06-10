@@ -1,0 +1,57 @@
+body { background: #f5f6fa; font-family: 'Segoe UI', sans-serif; }
+
+/* Navbar */
+.navbar { background: #1a1f36 !important; }
+.navbar-brand { font-size: 1.1rem; }
+.nav-link { color: rgba(255,255,255,.75) !important; }
+.nav-link.active, .nav-link:hover { color: #fff !important; }
+
+/* Cards */
+.card { border: none; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,.08); background: #fff; }
+.card-feature { background: #fff; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,.08);
+  transition: transform .2s, box-shadow .2s; }
+.card-feature:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(0,0,0,.13); }
+
+/* Feature icon */
+.feature-icon { font-size: 2.8rem; }
+
+/* Stat cards */
+.stat-card { background: #1a1f36; border-radius: 12px; color: #fff; }
+.stat-number { font-size: 2.5rem; font-weight: 700; color: #60a5fa; }
+.stat-label { font-size: .9rem; color: rgba(255,255,255,.6); }
+
+/* Webcam */
+.webcam-wrap { background: #000; border-radius: 10px; overflow: hidden; width: 100%; }
+.webcam-video { width: 100%; display: block; max-height: 420px; object-fit: cover; }
+
+/* Overlay */
+.webcam-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 12px;
+  background: linear-gradient(transparent, rgba(0,0,0,.6)); }
+.result-box { color: #fff; }
+.result-success { }
+.result-name { font-size: 1.4rem; font-weight: 700; }
+.result-info { font-size: .85rem; opacity: .85; }
+.result-msg { margin-top: 4px; font-size: .95rem; }
+.result-score { font-size: .8rem; opacity: .7; }
+.result-fail { font-size: 1rem; color: #f87171; }
+
+/* Today list */
+.today-list { max-height: 380px; overflow-y: auto; }
+.today-item { padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+.today-item:last-child { border-bottom: none; }
+
+/* Table */
+.table th { background: #f8f9fa; font-weight: 600; font-size: .85rem; color: #6b7280; }
+.table td { vertical-align: middle; }
+
+/* Buttons */
+.btn-primary { background: #3b82f6; border-color: #3b82f6; }
+.btn-primary:hover { background: #2563eb; border-color: #2563eb; }
+.btn-success { background: #10b981; border-color: #10b981; }
+.btn-success:hover { background: #059669; border-color: #059669; }
+
+/* Badge */
+.badge { font-size: .8rem; }
+
+/* Alerts */
+.alert { font-size: .9rem; }
