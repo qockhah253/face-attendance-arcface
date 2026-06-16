@@ -20,7 +20,6 @@ Hệ thống nhận diện khuôn mặt open-set, cho phép điểm danh tự đ
 
 | Phương pháp | Accuracy (open-set, 1.000 người) |
 |---|---|
-| CNN + Softmax Loss | ~60% |
 | CNN + Triplet Loss | 36.71% |
 | **ResNet50 + ArcFace Loss** | **94.74%** ✅ |
 
@@ -147,11 +146,3 @@ Mở trình duyệt tại **http://localhost:5000**
 
 ---
 
-## Thành viên nhóm
-
-| Họ tên | MSSV |
-|---|---|
-| Triệu Quốc Khánh | 23001615 |
-| Nguyễn Thị Thu Hà | 23001603 |
-| Lê Văn Đạt | 23001592 |
-| Triệu Đình Dũng | 23001587 |
