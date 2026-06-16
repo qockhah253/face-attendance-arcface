@@ -1,7 +1,7 @@
 # Face Attendance — ArcFace
 
 > Hệ thống điểm danh tự động bằng nhận diện khuôn mặt  
-> Báo cáo cuối kì môn **Nhập môn AI** — Nhóm 8  
+> Báo cáo cuối kì môn **Nhập môn AI**
 > Khoa Vật lý · Trường ĐH Khoa học Tự nhiên, ĐHQGHN
 
 ![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=flat&logo=python&logoColor=white)
